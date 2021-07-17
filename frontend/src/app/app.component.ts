@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
+import { PersonService } from './core/services/person.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,5 @@ import { PrimeNGConfig } from 'primeng/api';
   styles: []
 })
 export class AppComponent {
-  title = 'frontend';
-  constructor(private primengConfig: PrimeNGConfig) {}
+  constructor(private primengConfig: PrimeNGConfig, private personService: PersonService) {}
 }

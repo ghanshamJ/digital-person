@@ -5,9 +5,10 @@ import { HttpService } from '../http/http.service';
 @Injectable({
   providedIn: 'root'
 })
-export class PersonService {
+export class AuthService {
   constructor(private httpService: HttpService) { }
-  addPerson(reqParam: any):Observable<any>{
-      return this.httpService.addPerson(reqParam);
+  login(reqParam: any):Observable<any>{
+      return this.httpService.login(reqParam);
   }
 }
+

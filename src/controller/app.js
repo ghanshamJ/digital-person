@@ -4,7 +4,7 @@ const AuthService = require("../services/auth-service");
 const app = express();
 const personService = new PersonService();
 const authService = new AuthService();
-
+const cors = require('cors');
 app.use(
   express.urlencoded({
     extended: true,
@@ -15,6 +15,7 @@ app.use(express.static(process.cwd()+"/frontend/public/"));
 app.get('/', (req,res) => {
   res.sendFile(process.cwd()+"/frontend/public/index.html")
 });
+app.use(cors());
 app.get("/api/v1/persons", authService.verifyToken, (req, res) => {
   personService
     .selectAll()

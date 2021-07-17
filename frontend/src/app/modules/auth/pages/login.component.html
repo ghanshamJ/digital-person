@@ -1,0 +1,10 @@
+<br />
+<p-card>
+  <ng-template pTemplate="header"> </ng-template>
+  <input type="text" pInputText [(ngModel)]="username" placeholder="Email" />
+  <br /><br />
+  <p-password [(ngModel)]="password" placeholder="Password"></p-password>
+  <br /><br />
+  <button (click)="login()" pButton type="button" label="Login"></button>
+  <ng-template pTemplate="footer"> </ng-template>
+</p-card>
