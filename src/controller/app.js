@@ -11,8 +11,9 @@ app.use(
   })
 );
 app.use(express.json());
-app.get("/", (req, res) => {
-  res.send("Home!");
+app.use(express.static(process.cwd()+"/frontend/public/"));
+app.get('/', (req,res) => {
+  res.sendFile(process.cwd()+"/frontend/public/index.html")
 });
 app.get("/api/v1/persons", authService.verifyToken, (req, res) => {
   personService
