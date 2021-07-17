@@ -1,0 +1,20 @@
+{
+  "name": "digital-person",
+  "version": "1.0.0",
+  "description": "demo app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghanshamJ/digital-person.git"
+  },
+  "author": "Ghansham Jadhav",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ghanshamJ/digital-person/issues"
+  },
+  "homepage": "https://github.com/ghanshamJ/digital-person#readme"
+}
