@@ -22,6 +22,7 @@ import { OnlyLoggedInUsersGuard } from './core/gaurds/OnlyLoggedInUsersGuard';
     
   ],
   imports: [
+    BrowserModule,
     MenubarModule,
     AuthModule,
     PersonModule,

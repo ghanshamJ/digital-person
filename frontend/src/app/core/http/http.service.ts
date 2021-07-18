@@ -23,4 +23,10 @@ export class HttpService {
       headers: this.contentHeader,
     });
   }
+
+  getPersons(reqParm: Person): Observable<any> {
+    return this.http.get<any>(this.url.getPersonsURL, {
+      headers: this.contentHeader,
+    });
+  }
 }

@@ -1,1 +1,15 @@
-add person
+<br />
+<p-card>
+    <ng-template pTemplate="header"> </ng-template>
+    <input type="text" pInputText [(ngModel)]="name" placeholder="Name" />
+    <br /><br />
+    <input type="text" pInputText [(ngModel)]="email" placeholder="Email" />
+    <br /><br />
+    <input type="text" pInputText [(ngModel)]="address" placeholder="Address" />
+    <br /><br />
+    <input type="text" pInputText [(ngModel)]="country" placeholder="Country" />
+    <br /><br />
+    <button (click)="addPerson()" pButton type="button" label="Add"></button>
+    <br>
+    <ng-template pTemplate="footer"> </ng-template>
+</p-card>

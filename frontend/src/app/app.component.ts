@@ -30,7 +30,17 @@ export class AppComponent implements OnInit {
             icon: "pi pi-plus",
             routerLink: "add-person",
           },
+          {
+            label: "Show Persons",
+            icon: "pi pi-list",
+            routerLink: "persons-list",
+          },
         ],
+      },
+      {
+        label: "Graph",
+        icon: "pi pi-chart-bar",
+        routerLink: "graph",
       },
       this.authService.isAuthenticated()
         ? {

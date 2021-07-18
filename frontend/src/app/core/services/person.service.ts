@@ -10,4 +10,8 @@ export class PersonService {
   addPerson(reqParam: any):Observable<any>{
       return this.httpService.addPerson(reqParam);
   }
+
+  getPersons(reqParam: any):Observable<any>{
+    return this.httpService.getPersons(reqParam);
+}
 }
