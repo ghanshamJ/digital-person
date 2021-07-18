@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardModule } from 'primeng/card';
-import { PersonComponent } from './pages/person.component';
 import { PersonRoutingModule } from './person-routing.module';
+import { PersonComponent } from './person.component';
 @NgModule({
   imports: [
     CommonModule,

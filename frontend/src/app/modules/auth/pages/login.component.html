@@ -4,7 +4,10 @@
   <input type="text" pInputText [(ngModel)]="username" placeholder="Email" />
   <br /><br />
   <p-password [(ngModel)]="password" placeholder="Password"></p-password>
-  <br /><br />
+ <br /><br />
   <button (click)="login()" pButton type="button" label="Login"></button>
+  <br>
+  <span *ngIf="errorMsg" style="color: red;">{{errorMsg}}</span>
+  
   <ng-template pTemplate="footer"> </ng-template>
 </p-card>

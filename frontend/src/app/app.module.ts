@@ -10,7 +10,11 @@ import { PersonService } from './core/services/person.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PersonModule } from './modules/person/person.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { MenubarModule } from "primeng/menubar";
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './core/http/interceptor';
+import { OnlyLoggedInUsersGuard } from './core/gaurds/OnlyLoggedInUsersGuard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +22,7 @@ import { AuthModule } from './modules/auth/auth.module';
     
   ],
   imports: [
+    MenubarModule,
     AuthModule,
     PersonModule,
     HttpClientModule,
@@ -27,7 +32,14 @@ import { AuthModule } from './modules/auth/auth.module';
     BrowserModule,
     AppRoutingModule,
   ],
- // providers: [PersonService],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    OnlyLoggedInUsersGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

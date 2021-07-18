@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PersonComponent } from './pages/person.component';
+import { OnlyLoggedInUsersGuard } from 'src/app/core/gaurds/OnlyLoggedInUsersGuard';
+import { AddPersonComponent } from './pages/add-person/addPerson.component';
 
 const routes: Routes = [
   {
-    path: 'person',
-    component: PersonComponent
+    path: 'add-person',
+    component: AddPersonComponent,
+    canActivate: [OnlyLoggedInUsersGuard]
   }
 ];
 

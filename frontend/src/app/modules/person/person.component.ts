@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-person',
-  template: `
-    <p>
-      person works!
-    </p>
-  `,
+  templateUrl:'person.component.html',
   styles: [
   ]
 })

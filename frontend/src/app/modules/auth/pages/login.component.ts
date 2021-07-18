@@ -1,4 +1,6 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { PersonService } from 'src/app/core/services/person.service';
 
@@ -11,16 +13,29 @@ import { PersonService } from 'src/app/core/services/person.service';
 export class LoginComponent implements OnInit {
   username:any;
   password:any;
-  constructor(private authService: AuthService) { }
+  errorMsg:string="";
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
   login():void{
-    this.authService.login({username:"admin",password:"admin"}).subscribe(res=>{
-      alert("login");
-      console.log(res)
-    });
-    
-  }
+    if(!this.username){
+     this.errorMsg = "Please enter username!";
+      return;
+    }
+    if(!this.password){
+      this.errorMsg = "Please enter password!";
+       return;
+    }
+    this.errorMsg=""
+    this.authService.login({username:this.username,password:this.password}).subscribe(res=>{
+      this.authService.setToken(res.accessToken);
+      console.log("success")
+      this.router.navigate(['add-person'])
 
+    },err=>{
+      this.authService.setToken("");
+      console.log("failed")
+    });
+  }
 }
