@@ -6,7 +6,10 @@
     <br /><br />
     <input type="text" pInputText [(ngModel)]="address" placeholder="Address" />
     <br /><br />
-    <input type="text" pInputText [(ngModel)]="country" placeholder="Country" />
+    <p-dropdown [options]="countries" [(ngModel)]="selectedCountry" placeholder="Select a Country" optionLabel="name" optionValue="name" [showClear]="true"></p-dropdown>
+    <br /><br />
+    <input style="padding: 10px;" type="date"  [(ngModel)]="birthDate">
+    Birth Date
     <br /><br />
     <button (click)="addPerson()" pButton type="button" label="Add"></button>
     <br>

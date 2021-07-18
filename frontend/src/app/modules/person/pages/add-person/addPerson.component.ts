@@ -12,24 +12,27 @@ import { Person } from 'src/app/shared/models/Person';
 })
 export class AddPersonComponent implements OnInit {
 
+  countries:any[];
   name: string;
   email: string;
-  country: string;
+  selectedCountry: string;
   address:string;
   birthDate:Date;
   errorMsg:string="";
   constructor(private personService: PersonService, private router: Router) {
    }
   ngOnInit(): void {
+     this.personService.getCountries().subscribe(res=>{
+      this.countries = res;
+    });
   }
   addPerson():void{
     const person = new Person();
     person.name = this.name;
     person.email = this.email;
     person.address = this.address;
-    person.country=this.country;
+    person.country=this.selectedCountry;
     person.dob = this.birthDate;
-
     this.personService.addPerson(person).subscribe(res=>{
       alert("new Person added");
     })

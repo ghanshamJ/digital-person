@@ -17,4 +17,7 @@ export class PersonService {
   getPersonCountByCountry() {
     return this.httpService.getPersonCountByCountry();
   }
+  getCountries(): Observable<any>{
+    return this.httpService.getCountries();
+  }
 }

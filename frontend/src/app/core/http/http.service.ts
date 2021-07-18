@@ -34,4 +34,8 @@ export class HttpService {
       headers: this.contentHeader,
     });
   }
+
+  public getCountries(): Observable<any> {
+    return this.http.get("./assets/countries.json");
+  }
 }

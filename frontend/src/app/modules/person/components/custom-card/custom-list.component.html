@@ -18,7 +18,7 @@
                             </tr>
                             <tr>
                                 <td> <i class="pi pi-calendar"></i> </td>
-                                <td>{{person.dob?person.dob +' Years':'N/A'}}</td>
+                                <td>{{person.dob? (person.dob | age):'N/A'}}</td>
                             </tr>
                         </table>
 
@@ -27,7 +27,8 @@
                         <br><br>
                         <i style=" color: cadetblue; font-size: 20px;" class="pi pi-user-edit"></i>
                         <br>
-                        <i style="color: darkblue; font-size: 20px;" class="pi pi-bars"></i>
+                        &nbsp;     
+                        <i (click)="showPersonDetail(person)" style="color: darkblue; font-size: 20px;" class="pi pi-bars"></i>
                         <br>
                     </div>
                 </div>
@@ -35,3 +36,12 @@
         </ng-template>
     </p-dataView>
 </div>
+<br>
+<p-dialog header="Person Detail" [(visible)]="display">
+    <app-person-detail [person]="selectedPerson" ></app-person-detail>
+</p-dialog>
+<agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
+
+<br><br>
