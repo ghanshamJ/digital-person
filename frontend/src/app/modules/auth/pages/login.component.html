@@ -1,10 +1,11 @@
   <br />
   <ng-template pTemplate="header"> </ng-template>
-  <input type="text" pInputText [(ngModel)]="username" placeholder="Email" />
+  <input type="text" pInputText [(ngModel)]="username" placeholder="Username" />
   <br /><br />
   <p-password [(ngModel)]="password" placeholder="Password"></p-password>
  <br /><br />
   <button (click)="login()" pButton type="button" label="Login"></button>
+  <br>
   <br>
   <span *ngIf="errorMsg" style="color: red;">{{errorMsg}}</span>
   <ng-template pTemplate="footer"> </ng-template>

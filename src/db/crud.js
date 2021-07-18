@@ -46,5 +46,11 @@ class PersonDbOperation {
       );
     });
   }
+
+  getPersonCountByCountry(){
+    return PersonModel.aggregate([
+      {"$group" : {_id:"$country", count:{$sum:1}}}
+  ])
+  }
 }
 module.exports = PersonDbOperation;

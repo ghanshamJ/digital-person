@@ -38,9 +38,9 @@ export class AppComponent implements OnInit {
         ],
       },
       {
-        label: "Graph",
+        label: "Statistics",
         icon: "pi pi-chart-bar",
-        routerLink: "graph",
+        routerLink: "statistics",
       },
       this.authService.isAuthenticated()
         ? {

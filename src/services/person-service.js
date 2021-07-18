@@ -13,5 +13,9 @@ class PersonService {
   update(id, data) {
     return personDbOperation.update(id, data);
   }
+
+  getPersonCountByCountry(){
+    return personDbOperation.getPersonCountByCountry();
+  }
 }
 module.exports = PersonService;

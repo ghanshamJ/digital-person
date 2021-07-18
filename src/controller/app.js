@@ -60,4 +60,18 @@ app.put("/api/v1/person/:id", authService.verifyToken, (req, res) => {
 app.post("/api/v1/auth", (req, res) => {
   res.send(authService.login(req.body));
 });
+
+
+app.get("/api/v1/statistics-by-country", authService.verifyToken, (req, res) => {
+  personService
+    .getPersonCountByCountry()
+    .then((result) => {
+      console.log(result);
+      res.json(result);
+    })
+    .catch((rej) => {
+      res.statusCode(501);
+    });
+});
+
 module.exports = app;

@@ -1,18 +1,21 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { PersonRoutingModule } from './person-routing.module';
-import { PersonListComponent } from './pages/person-list/personList.component';
-import { AddPersonComponent } from './pages/add-person/addPerson.component';
-import { FormsModule } from '@angular/forms';
-import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
-import {InputTextModule} from 'primeng/inputtext';
-import { CustomListComponent } from './components/custom-card/custom-list.component';
-import {DataViewModule} from 'primeng/dataview';
-import {DropdownModule} from 'primeng/dropdown';
-import {RatingModule} from 'primeng/rating';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { PersonRoutingModule } from "./person-routing.module";
+import { PersonListComponent } from "./pages/person-list/personList.component";
+import { AddPersonComponent } from "./pages/add-person/addPerson.component";
+import { FormsModule } from "@angular/forms";
+import { ButtonModule } from "primeng/button";
+import { CardModule } from "primeng/card";
+import { InputTextModule } from "primeng/inputtext";
+import { CustomListComponent } from "./components/custom-card/custom-list.component";
+import { DataViewModule } from "primeng/dataview";
+import { DropdownModule } from "primeng/dropdown";
+import { RatingModule } from "primeng/rating";
+import { StatisticsComponent } from "./pages/statistics/statistics.component";
+import {ChartModule} from 'primeng/chart';
 @NgModule({
   imports: [
+    ChartModule,
     DataViewModule,
     InputTextModule,
     ButtonModule,
@@ -21,12 +24,15 @@ import {RatingModule} from 'primeng/rating';
     CardModule,
     PersonRoutingModule,
     DropdownModule,
-    RatingModule
+    RatingModule,
   ],
   exports: [],
-  declarations: [PersonListComponent, AddPersonComponent, CustomListComponent],
+  declarations: [
+    PersonListComponent,
+    AddPersonComponent,
+    CustomListComponent,
+    StatisticsComponent,
+  ],
   providers: [],
-  
 })
 export class PersonModule {}
-

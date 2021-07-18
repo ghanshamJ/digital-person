@@ -29,4 +29,9 @@ export class HttpService {
       headers: this.contentHeader,
     });
   }
+  getPersonCountByCountry():Observable<any> {
+    return this.http.get<any>(this.url.getPersonCountByCountryURL, {
+      headers: this.contentHeader,
+    });
+  }
 }

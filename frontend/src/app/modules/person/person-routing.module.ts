@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { OnlyLoggedInUsersGuard } from 'src/app/core/gaurds/OnlyLoggedInUsersGuard';
 import { AddPersonComponent } from './pages/add-person/addPerson.component';
 import { PersonListComponent } from './pages/person-list/personList.component';
+import { StatisticsComponent } from './pages/statistics/statistics.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,11 @@ const routes: Routes = [
   {
     path: 'persons-list',
     component: PersonListComponent,
+    canActivate: [OnlyLoggedInUsersGuard]
+  },
+  {
+    path: 'statistics',
+    component: StatisticsComponent,
     canActivate: [OnlyLoggedInUsersGuard]
   }
 ];

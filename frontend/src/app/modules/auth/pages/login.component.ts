@@ -31,10 +31,14 @@ export class LoginComponent implements OnInit {
     this.authService.login({username:this.username,password:this.password}).subscribe(res=>{
       this.authService.setToken(res.accessToken);
       console.log("success")
+      this.username="";
+      this.password="";
       this.router.navigate(['persons-list'])
-
     },err=>{
       this.authService.setToken("");
+      this.username="";
+      this.password="";
+      this.errorMsg = "Username or Password does not correct!";
       console.log("failed")
     });
   }
