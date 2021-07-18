@@ -7,18 +7,26 @@ import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import {InputTextModule} from 'primeng/inputtext';
+import { CustomListComponent } from './components/custom-card/custom-list.component';
+import {DataViewModule} from 'primeng/dataview';
+import {DropdownModule} from 'primeng/dropdown';
+import {RatingModule} from 'primeng/rating';
 @NgModule({
   imports: [
+    DataViewModule,
     InputTextModule,
     ButtonModule,
     FormsModule,
     CommonModule,
     CardModule,
-    PersonRoutingModule
+    PersonRoutingModule,
+    DropdownModule,
+    RatingModule
   ],
   exports: [],
-  declarations: [PersonListComponent, AddPersonComponent],
-  providers: []
+  declarations: [PersonListComponent, AddPersonComponent, CustomListComponent],
+  providers: [],
+  
 })
 export class PersonModule {}
 

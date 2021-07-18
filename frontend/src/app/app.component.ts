@@ -22,16 +22,16 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.items = [
       {
-        label: "Person",
-        icon: "pi pi-user",
+        label: "Persons",
+        icon: "pi pi-users",
         items: [
           {
-            label: "Add new person",
+            label: "Add new",
             icon: "pi pi-plus",
             routerLink: "add-person",
           },
           {
-            label: "Show Persons",
+            label: "Show",
             icon: "pi pi-list",
             routerLink: "persons-list",
           },

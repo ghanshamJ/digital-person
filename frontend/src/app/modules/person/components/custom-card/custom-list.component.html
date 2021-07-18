@@ -1,0 +1,37 @@
+<div class="card">
+    <p-dataView #dv [value]="persons" [paginator]="true" [rows]="9" layout="list">
+        <ng-template let-person pTemplate="listItem">
+            <div *ngIf="person.name" class="p-col-12">
+                <div class="person-list-item">
+                    <img [src]="'assets/logo.png'" [alt]="person.name" />
+                    <div class="person-list-detail">
+                        <div class="person-name">{{person.name}}</div>
+                        <br>
+                        <table>
+                            <tr>
+                                <td><i class="pi pi-send"></i></td>
+                                <td>{{person.email?person.email:'N/A'}}</td>
+                            </tr>
+                            <tr>
+                                <td><i style="color: blue;" class="pi pi-globe"></i></td>
+                                <td>{{person.address?person.address:'N/A'}} </td>
+                            </tr>
+                            <tr>
+                                <td> <i class="pi pi-calendar"></i> </td>
+                                <td>{{person.dob?person.dob +' Years':'N/A'}}</td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <div class="person-list-action">
+                        <br><br>
+                        <i style=" color: cadetblue; font-size: 20px;" class="pi pi-user-edit"></i>
+                        <br>
+                        <i style="color: darkblue; font-size: 20px;" class="pi pi-bars"></i>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
+</div>
