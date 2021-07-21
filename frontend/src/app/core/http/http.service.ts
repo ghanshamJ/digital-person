@@ -13,6 +13,11 @@ export class HttpService {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
   });
+
+  private contentHeaderForm = new HttpHeaders({
+    //"Content-Type": "multipart/form-data",
+    "Access-Control-Allow-Origin": "*",
+  });
   login(reqParm: any): Observable<any> {
     return this.http.post<any>(this.url.authURL, reqParm, {
       headers: this.contentHeader,
@@ -20,16 +25,22 @@ export class HttpService {
   }
   addPerson(reqParm: Person): Observable<any> {
     return this.http.post<any>(this.url.addPersonURL, reqParm, {
-      headers: this.contentHeader,
+      headers: this.contentHeaderForm,
     });
   }
 
-  getPersons(reqParm: Person): Observable<any> {
-    return this.http.get<any>(this.url.getPersonsURL, {
+  updatePerson(id: any, reqParm: Person): Observable<Person> {
+    return this.http.put<Person>(this.url.updatePersonURL + id, reqParm, {
+      headers: this.contentHeaderForm,
+    });
+  }
+
+  getPersons(reqParm: Person): Observable<Person> {
+    return this.http.get<Person>(this.url.getPersonsURL, {
       headers: this.contentHeader,
     });
   }
-  getPersonCountByCountry():Observable<any> {
+  getPersonCountByCountry(): Observable<any> {
     return this.http.get<any>(this.url.getPersonCountByCountryURL, {
       headers: this.contentHeader,
     });

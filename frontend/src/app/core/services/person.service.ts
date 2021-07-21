@@ -13,7 +13,9 @@ export class PersonService {
   addPerson(reqParam: any): Observable<any> {
     return this.httpService.addPerson(reqParam);
   }
-
+  updatePerson(id: any, reqParm: any): Observable<any> {
+    return this.httpService.updatePerson(id,reqParm);
+  }
   getPersons(reqParam: any): Observable<any> {
     return this.httpService.getPersons(reqParam);
   }
@@ -27,7 +29,7 @@ export class PersonService {
     this.getCountriesHttp().subscribe((res) => {
       res.forEach((country) => {
         this.countryMap.set(country.country_code, country);
-        this.countryMap.set(country.name, country);
+        //this.countryMap.set(country.name, country);
       });
     });
   }

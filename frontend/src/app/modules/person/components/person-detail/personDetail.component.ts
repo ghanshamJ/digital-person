@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { PersonService } from "src/app/core/services/person.service";
+import { URL } from "src/app/core/Url";
 import { Country } from "src/app/shared/models/Country";
 import { Person } from "src/app/shared/models/Person";
 
@@ -15,13 +16,15 @@ export class PersonDetailComponent implements OnInit {
   overlays: any[];
   infoWindow: any;
   country: Country;
-  constructor(private personService: PersonService, private router: Router) {
+  imgUrl:string;
+  constructor(public personService: PersonService, private router: Router, private url: URL) {
     this.person = this.router.getCurrentNavigation().extras.state;
     if (!this.person) {
       this.router.navigate(["persons-list"]);
     }
   }
   ngOnInit() {
+    this.imgUrl=this.url.imageURL;
     this.country = this.personService.getCountry(this.person.country);
     this.initMap();
   }

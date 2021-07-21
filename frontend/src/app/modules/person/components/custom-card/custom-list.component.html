@@ -1,48 +1,63 @@
 <div class="card">
-    <p-dataView #dv [value]="persons" [paginator]="true" [rows]="9" layout="list">
-        <ng-template let-person pTemplate="listItem">
-            <div *ngIf="person.name" class="p-col-12">
-                <div class="person-list-item">
-                    <img [src]="'assets/logo.png'" [alt]="person.name" />
-                    <div class="person-list-detail">
-                        <div class="person-name">{{person.name}}</div>
-                        <br>
-                        <table>
-                            <tr>
-                                <td><i class="pi pi-send"></i></td>
-                                <td>{{person.email?person.email:'N/A'}}</td>
-                            </tr>
-                            <tr>
-                                <td><i style="color: blue;" class="pi pi-globe"></i></td>
-                                <td>{{person.address?person.address:'N/A'}} </td>
-                            </tr>
-                            <tr>
-                                <td> <i class="pi pi-calendar"></i> </td>
-                                <td>{{person.dob? (person.dob | age):'N/A'}}</td>
-                            </tr>
-                        </table>
-
-                    </div>
-                    <div class="person-list-action">
-                        <br><br>
-                        <i (click)="editPersonDetail(person)" style="cursor: pointer; color: cadetblue; font-size: 20px;" class="pi pi-user-edit"></i>
-                        <br>
-                        &nbsp;     
-                        <i (click)="showPersonDetail(person)" style="cursor: pointer; color: darkblue; font-size: 20px;" class="pi pi-bars"></i>
-                        <br>
-                    </div>
-                </div>
-            </div>
-        </ng-template>
-    </p-dataView>
+  <p-dataView #dv [value]="persons" [paginator]="true" [rows]="9" layout="list">
+    <ng-template let-person pTemplate="listItem">
+      <div *ngIf="person.name" class="p-col-12">
+        <div class="person-list-item">
+          <img
+            [src]="imgUrl + person._id"
+            [alt]="person.name"
+          />
+          <div class="person-list-detail">
+            <div class="person-name">{{ person.name }}</div>
+            <br />
+            <table>
+              <tr>
+                <td><i class="pi pi-send"></i></td>
+                <td>{{ person.email ? person.email : "N/A" }}</td>
+              </tr>
+              <tr>
+                <td><i style="color: blue" class="pi pi-globe"></i></td>
+                <td>{{ person.address ? person.address : "N/A" }}</td>
+              </tr>
+              <tr>
+                <td><i class="pi pi-calendar"></i></td>
+                <td>{{ person.dob ? (person.dob | age) : "N/A" }}</td>
+              </tr>
+            </table>
+          </div>
+          <div class="person-list-action">
+            <br /><br />
+            <i
+              (click)="editPersonDetail(person)"
+              style="cursor: pointer; color: cadetblue; font-size: 20px"
+              class="pi pi-user-edit"
+            ></i>
+            <br />
+            &nbsp;
+            <i
+              (click)="showPersonDetail(person)"
+              style="cursor: pointer; color: darkblue; font-size: 20px"
+              class="pi pi-bars"
+            ></i>
+            <br />
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-dataView>
 </div>
-<br>
+<br />
 <p-dialog header="Detail" [(visible)]="display">
-    <app-person-detail *ngIf="selectedPerson" [person]="selectedPerson" ></app-person-detail>
+  <app-person-detail
+    *ngIf="selectedPerson"
+    [person]="selectedPerson"
+  ></app-person-detail>
 </p-dialog>
 <p-dialog header="Edit Detail" [(visible)]="displayEdit">
-    <app-edit-person-detail *ngIf="selectedPersonEditPerson" [person]="selectedPersonEditPerson" ></app-edit-person-detail>
+  <app-edit-person-detail
+    *ngIf="selectedPersonEditPerson"
+    [person]="selectedPersonEditPerson"
+  ></app-edit-person-detail>
 </p-dialog>
-<br><br>
-<agm-map >
-</agm-map>
+<br /><br />
+<agm-map> </agm-map>

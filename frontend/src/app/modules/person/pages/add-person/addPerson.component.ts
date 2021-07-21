@@ -12,24 +12,28 @@ import { Person } from "src/app/shared/models/Person";
 })
 export class AddPersonComponent implements OnInit {
   countries: Country[];
-  name: string;
-  email: string;
-  selectedCountry: string;
-  address: string;
-  birthDate: Date;
   errorMsg: string = "";
-  constructor(private personService: PersonService, private router: Router) {}
-  ngOnInit(): void {
-    this.countries = this.personService.getCountries();
+  person: Person;
+  userFile: any;
+  constructor(public personService: PersonService, private router: Router) {
+    this.person = new Person();
+  }
+  ngOnInit(): void {}
+  fileToUpload: File | null = null;
+  handleFileInput(e: Event) {
+    console.log(e);
+    this.fileToUpload = e.target["files"].item(0);
+    console.log(this.fileToUpload);
   }
   addPerson(): void {
-    const person = new Person();
-    person.name = this.name;
-    person.email = this.email;
-    person.address = this.address;
-    person.country = this.selectedCountry;
-    person.dob = this.birthDate;
-    this.personService.addPerson(person).subscribe((res) => {
+    const fd = new FormData();
+    fd.append("image", this.fileToUpload);
+    fd.append("name", this.person.name);
+    fd.append("email", this.person.email);
+    fd.append("dob", this.person.dob.toString());
+    fd.append("address", this.person.address);
+    fd.append("country", this.person.country);
+    this.personService.addPerson(fd).subscribe((res) => {
       alert("new Person added");
     });
   }

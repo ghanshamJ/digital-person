@@ -1,47 +1,80 @@
-<div class="card">
-    <div class="person-list-item">
-        <div>
-            <img [src]="'assets/logo.png'" [alt]="person.name" /> <br>
-            <input type="file"/>
-        </div>
-
-        <div class="person-list-detail">
-            <div class="person-name">{{person.name}}</div>
-            <br>
-            <table>
-                <tr>
-                    <td><b>Email</b></td>
-                    <td></td>
-                    <td><input type="text" pInputText [(ngModel)]="person.email" placeholder="Email" />
-                    </td>
-                </tr>
-                <tr>
-                    <td><b>Address</b></td>
-                    <td></td>
-                    <td><input type="text" pInputText [(ngModel)]="person.address" placeholder="Address" />
-
-                    </td>
-                </tr>
-                <tr>
-                    <td><b>Country</b></td>
-                    <td></td>
-                    <td>
-                        <p-dropdown [options]="countries" [(ngModel)]="person.country" placeholder="Select a Country"
-                            optionLabel="name" optionValue="name" [showClear]="true"></p-dropdown>
-                    </td>
-                </tr>
-                <tr>
-                    <td> <b>Age</b> </td>
-                    <td></td>
-                    <td>
-                        {{person.dob? (person.dob | age):'N/A'}}</td>
-                </tr>
-            </table>
-
-        </div>
+<div
+  style="
+    margin: auto;
+    padding: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    margin-top: 6px;
+    width: 98%;
+  "
+>
+  <div class="person-list-item">
+    <div>
+      <img [src]="imgUrl + person._id" [alt]="person.name" /> <br />
+      <input type="file" />
     </div>
+
+    <div class="person-list-detail">
+      
+      <div class="person-name">{{ person.name }}</div>
+      <br />
+      <table>
+        <tr>
+          <td><b>Email</b></td>
+          <td></td>
+          <td>
+            <input
+              type="text"
+              pInputText
+              [(ngModel)]="person.email"
+              placeholder="Email"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><b>Address</b></td>
+          <td></td>
+          <td>
+            <input
+              type="text"
+              pInputText
+              [(ngModel)]="person.address"
+              placeholder="Address"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><b>Country</b></td>
+          <td></td>
+          <td>
+            <p-dropdown
+              [options]="countries"
+              [(ngModel)]="person.country"
+              placeholder="Select a Country"
+              optionLabel="name"
+              optionValue="country_code"
+              [showClear]="true"
+            ></p-dropdown>
+          </td>
+        </tr>
+        <tr>
+          <td><b>Age</b></td>
+          <td></td>
+          <td>
+            <!-- <p-calendar placeholder = "Birth Date" [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2021"
+            [(ngModel)]="person.dob"></p-calendar> -->
+            {{ person.dob ? (person.dob | age) : "N/A" }}
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <button
+  style="float: right; margin-right: 20px"
+  pButton
+  type="button"
+  label="Update"
+  (click) = "updatePerson()"
+></button>
 </div>
 
 
-
-<button style="float: right; margin-right: 20px;" pButton type="button" label="Update"></button>

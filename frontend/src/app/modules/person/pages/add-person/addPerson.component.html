@@ -1,16 +1,19 @@
     <br>
     <ng-template pTemplate="header"> </ng-template>
-    <input type="text" pInputText [(ngModel)]="name" placeholder="Name" />
+    <input type="text" pInputText [(ngModel)]="person.name" placeholder="Name" />
     <br /><br />
-    <input type="text" pInputText [(ngModel)]="email" placeholder="Email" />
+    <input type="text" pInputText [(ngModel)]="person.email" placeholder="Email" />
     <br /><br />
-    <input type="text" pInputText [(ngModel)]="address" placeholder="Address" />
+    <input type="text" pInputText [(ngModel)]="person.address" placeholder="Address" />
     <br /><br />
-    <p-dropdown [options]="countries" [(ngModel)]="selectedCountry" placeholder="Select a Country" optionLabel="name" optionValue="name" [showClear]="true"></p-dropdown>
+    <p-calendar placeholder = "Birth Date" [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2021"
+    [(ngModel)]="person.dob"></p-calendar>
+     <br /><br />
+    <p-dropdown [options]="personService.getCountries()" [(ngModel)]="person.country" placeholder="Select a Country" optionLabel="name" optionValue="country_code" [showClear]="true"></p-dropdown>
     <br /><br />
-    <input style="padding: 10px;" type="date"  [(ngModel)]="birthDate">
-    Birth Date
-    <br /><br />
+    <label for="file">DP</label>
+    <input type="file" id="file"(change)="handleFileInput($event)">
+    <br><br>
     <button (click)="addPerson()" pButton type="button" label="Add"></button>
     <br>
     <ng-template pTemplate="footer"> </ng-template>

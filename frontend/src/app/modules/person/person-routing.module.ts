@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { OnlyLoggedInUsersGuard } from 'src/app/core/gaurds/OnlyLoggedInUsersGuard';
+import { EditPersonDetailComponent } from './components/edit-person/editPersonDetail.component';
 import { PersonDetailComponent } from './components/person-detail/personDetail.component';
 import { AddPersonComponent } from './pages/add-person/addPerson.component';
 import { PersonListComponent } from './pages/person-list/personList.component';
@@ -27,6 +28,12 @@ const routes: Routes = [
     component: PersonDetailComponent,
     canActivate: [OnlyLoggedInUsersGuard]
   },
+  {
+    path: 'edit-person-detail',
+    component: EditPersonDetailComponent,
+    canActivate: [OnlyLoggedInUsersGuard]
+  },
+  
 ];
 
 @NgModule({

@@ -31,14 +31,17 @@ export class StatisticsComponent implements OnInit {
       function getRandomNum(min, max) {
         return Math.random() * (max - min) + min;
       }
-      let r = getRandomNum(0,255);
-      let g = getRandomNum(0,255);
-      let b = getRandomNum(0,255);
-      return {backColor:`rgba(${r},${g},${b},1.5)`, hoverColor:`rgba(${r},${g},${b},2)` };
+      let r = getRandomNum(0, 255);
+      let g = getRandomNum(0, 255);
+      let b = getRandomNum(0, 255);
+      return {
+        backColor: `rgba(${r},${g},${b},1.5)`,
+        hoverColor: `rgba(${r},${g},${b},2)`,
+      };
     }
     const datasetsPie = [
       {
-        label: 'My dataset',
+        label: "My dataset",
         data: [],
         backgroundColor: [],
         hoverBackgroundColor: [],
@@ -46,11 +49,14 @@ export class StatisticsComponent implements OnInit {
     ];
     for (const obj of data) {
       if (obj._id) {
-        labels.push(obj._id);
-        datasetsPie[0].data.push(obj.count);
-        const color = getColor();
-        datasetsPie[0].backgroundColor.push(color.backColor);
-        datasetsPie[0].hoverBackgroundColor.push(color.hoverColor);
+        const country = this.personService.getCountry(obj._id);
+        if (country) {
+          labels.push(country.name);
+          datasetsPie[0].data.push(obj.count);
+          const color = getColor();
+          datasetsPie[0].backgroundColor.push(color.backColor);
+          datasetsPie[0].hoverBackgroundColor.push(color.hoverColor);
+        }
       }
     }
     this.data = { datasets: datasetsPie, labels: labels };

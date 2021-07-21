@@ -1,35 +1,35 @@
-
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
-import { SelectItem } from 'primeng/api';
-import { Person } from 'src/app/shared/models/Person';
-import { AgePipe } from 'src/app/shared/pipes/age.pipe';
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Router } from "@angular/router";
+import { SelectItem } from "primeng/api";
+import { Person } from "src/app/shared/models/Person";
+import { AgePipe } from "src/app/shared/pipes/age.pipe";
+import { URL } from "../../../../core/Url";
 
 @Component({
-  selector: 'app-custom-list',
-  templateUrl: './custom-list.component.html',
-  styleUrls: ['./custom-list.component.css']
+  selector: "app-custom-list",
+  templateUrl: "./custom-list.component.html",
+  styleUrls: ["./custom-list.component.css"],
 })
 export class CustomListComponent implements OnInit {
   @Input() persons: Person[];
   date = new Date(3737837873);
-  constructor(private router: Router){}
+  constructor(private router: Router, public url: URL) {}
   ngOnInit() {
+    this.imgUrl = this.url.imageURL;
   }
-  title = 'My first AGM project';
-  lat = 51.678418;
-  lng = 7.809007;
-  selectedPerson:Person;
-  selectedPersonEditPerson:Person;
-  showPersonDetail(person:Person):void{
-     this.router.navigate(['../person-detail'], { state: person });
+  imgUrl: string;
+  selectedPerson: Person;
+  selectedPersonEditPerson: Person;
+  showPersonDetail(person: Person): void {
+    this.router.navigate(["../person-detail"], { state: person });
     // this.display = true;
     // this.selectedPerson = person;
   }
-  editPersonDetail(person:Person):void{
-    this.displayEdit = true;
-    this.selectedPersonEditPerson = person;
+  editPersonDetail(person: Person): void {
+    this.router.navigate(["../edit-person-detail"], { state: person });
+    // this.displayEdit = true;
+    // this.selectedPersonEditPerson = person;
   }
-  displayEdit:boolean = false;
+  displayEdit: boolean = false;
   display: boolean = false;
 }

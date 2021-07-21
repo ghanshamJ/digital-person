@@ -10,7 +10,7 @@ style="
 "
 >
     <div class="person-list-item">
-        <img [src]="'assets/logo.png'" width="100px" [alt]="person.name" />
+        <img [src]="imgUrl+person._id" width="100px" [alt]="person.name" />
         <div class="person-list-detail">
             <div class="person-name">{{person.name}}</div>
             <br>
@@ -29,7 +29,7 @@ style="
                 <tr>
                     <td><b>Country</b></td>
                     <td></td>
-                    <td>{{person.country?person.country:'N/A'}} </td>
+                    <td>{{person.country?personService.getCountry(person.country).name:'N/A'}} </td>
                 </tr>
                 <tr>
                     <td> <b>Age</b> </td>
