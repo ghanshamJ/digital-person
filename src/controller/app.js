@@ -73,7 +73,7 @@ const imgModel = require("../models/imageschema");
 app.get("/api/v1/image/:id", (req, res) => {
   imgModel.find({ userId: req.params.id }, (err, items) => {
     if (err) {
-      res.sendFile(process.cwd() + "/frontend/public/logo.png");
+      res.sendFile(process.cwd() + "/frontend/public/assets/logo.png");
       // res.status(500).send("An error occurred", err);
     } else {
       if (items[0]?.img?.contentType) {
