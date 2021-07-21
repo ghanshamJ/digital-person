@@ -79,7 +79,7 @@ app.get("/api/v1/image/:id", (req, res) => {
       if (items[0]?.img?.contentType) {
         res.contentType(items[0]?.img?.contentType).send(items[0]?.img?.data);
       } else {
-        res.sendFile(process.cwd() + "/frontend/public/logo.png");
+        res.sendFile(process.cwd() + "/frontend/public/assets/logo.png");
       }
     }
   });
