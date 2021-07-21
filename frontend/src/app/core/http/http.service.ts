@@ -35,7 +35,7 @@ export class HttpService {
     });
   }
 
-  public getCountries(): Observable<any> {
-    return this.http.get("./assets/countries.json");
+  public getCountries(): Observable<Person[]> {
+    return this.http.get<Person[]>("./assets/countries.json");
   }
 }

@@ -20,10 +20,16 @@ export class CustomListComponent implements OnInit {
   lat = 51.678418;
   lng = 7.809007;
   selectedPerson:Person;
+  selectedPersonEditPerson:Person;
   showPersonDetail(person:Person):void{
-    this.display = true;
-    this.selectedPerson = person;
+     this.router.navigate(['../person-detail'], { state: person });
+    // this.display = true;
+    // this.selectedPerson = person;
   }
+  editPersonDetail(person:Person):void{
+    this.displayEdit = true;
+    this.selectedPersonEditPerson = person;
+  }
+  displayEdit:boolean = false;
   display: boolean = false;
-
 }

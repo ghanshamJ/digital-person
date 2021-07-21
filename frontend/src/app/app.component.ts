@@ -17,9 +17,12 @@ export class AppComponent implements OnInit {
     private personService: PersonService,
     private authService: AuthService,
     private router: Router
-  ) {}
+  ) {
+    
+  }
 
   ngOnInit() {
+    this.personService.setCountries();
     this.items = [
       {
         label: "Persons",

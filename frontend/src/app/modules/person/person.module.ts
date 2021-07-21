@@ -21,10 +21,11 @@ import {DialogModule} from 'primeng/dialog';
 import { AgmCoreModule } from "@agm/core";
 import {ToastModule} from 'primeng/toast';
 import { MessageService } from "primeng/api";
+import { EditPersonDetailComponent } from "./components/edit-person/editPersonDetail.component";
 @NgModule({
   imports: [
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDHeh1wumeggNpcv4_wpm44r6yerv5sLSw'
+      apiKey: 'AIzaSyCD2OG72cEGzk0pYasQkeUtz0qz_VGU6dw'
     }),
     DialogModule,
     ToastModule,
@@ -49,6 +50,7 @@ import { MessageService } from "primeng/api";
     CustomListComponent,
     StatisticsComponent,
     PersonDetailComponent,
+    EditPersonDetailComponent
   ],
   providers: [MessageService],
 })

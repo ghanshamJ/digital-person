@@ -25,10 +25,10 @@
                     </div>
                     <div class="person-list-action">
                         <br><br>
-                        <i style=" color: cadetblue; font-size: 20px;" class="pi pi-user-edit"></i>
+                        <i (click)="editPersonDetail(person)" style="cursor: pointer; color: cadetblue; font-size: 20px;" class="pi pi-user-edit"></i>
                         <br>
                         &nbsp;     
-                        <i (click)="showPersonDetail(person)" style="color: darkblue; font-size: 20px;" class="pi pi-bars"></i>
+                        <i (click)="showPersonDetail(person)" style="cursor: pointer; color: darkblue; font-size: 20px;" class="pi pi-bars"></i>
                         <br>
                     </div>
                 </div>
@@ -37,11 +37,12 @@
     </p-dataView>
 </div>
 <br>
-<p-dialog header="Person Detail" [(visible)]="display">
-    <app-person-detail [person]="selectedPerson" ></app-person-detail>
+<p-dialog header="Detail" [(visible)]="display">
+    <app-person-detail *ngIf="selectedPerson" [person]="selectedPerson" ></app-person-detail>
 </p-dialog>
-<agm-map [latitude]="lat" [longitude]="lng">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-</agm-map>
-
+<p-dialog header="Edit Detail" [(visible)]="displayEdit">
+    <app-edit-person-detail *ngIf="selectedPersonEditPerson" [person]="selectedPersonEditPerson" ></app-edit-person-detail>
+</p-dialog>
 <br><br>
+<agm-map >
+</agm-map>
