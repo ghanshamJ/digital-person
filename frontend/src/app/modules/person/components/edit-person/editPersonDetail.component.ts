@@ -10,7 +10,7 @@ import { Person } from "src/app/shared/models/Person";
 @Component({
   selector: "app-edit-person-detail",
   templateUrl: "editPersonDetail.component.html",
-  styles: [],
+  styleUrls:["editPersonDetail.component.css"],
 })
 export class EditPersonDetailComponent implements OnInit {
   @Input() person: Person;
@@ -24,7 +24,7 @@ export class EditPersonDetailComponent implements OnInit {
   birthDate: Date;
   errorMsg: string = "";
   imgUrl:string;
-  constructor(private personService: PersonService, private router: Router,private url:URL) {
+  constructor(public personService: PersonService, private router: Router,private url:URL) {
     this.person = this.router.getCurrentNavigation().extras.state;
     if (!this.person) {
       this.router.navigate(["persons-list"]);
@@ -44,6 +44,12 @@ export class EditPersonDetailComponent implements OnInit {
     fd.append("country", this.person.country);
     this.personService.updatePerson(this.person._id,fd).subscribe((res) => {
       alert("Person data updated");
+      this.router.navigate(["persons-list"]);
     });
+  }
+  handleFileInput(e: Event) {
+    console.log(e);
+    this.fileToUpload = e.target["files"].item(0);
+    console.log(this.fileToUpload);
   }
 }

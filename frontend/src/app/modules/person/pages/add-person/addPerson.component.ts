@@ -8,7 +8,7 @@ import { Person } from "src/app/shared/models/Person";
 @Component({
   selector: "app-add-person",
   templateUrl: "addPerson.component.html",
-  styles: [],
+  styleUrls:["addPerson.component.css"],
 })
 export class AddPersonComponent implements OnInit {
   countries: Country[];

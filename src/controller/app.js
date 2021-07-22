@@ -1,3 +1,4 @@
+
 const express = require("express");
 const PersonService = require("../services/person-service");
 const AuthService = require("../services/auth-service");
@@ -122,27 +123,48 @@ app.put(
   upload.single("image"),
   (req, res) => {
     personService
-      .update(req.params.id,req.body)
+      .update(req.params.id, req.body)
       .then((doc) => {
-        res.json(doc);
-        // const obj = {
-        //   userId: doc._id,
-        //   img: {
-        //     data: fs.readFileSync(
-        //       path.join(__dirname + "/uploads/" + req.file.filename)
-        //     ),
-        //     contentType: "image/png",
-        //   },
-        // };
-        // imgModel.create(obj, (err, item) => {
-        //   if (err) {
-        //     console.log(err);
-        //   } else {
-        //     res.send(doc);
-        //   }
-        // });
+        if (req.file) {
+          const obj = {
+            userId: doc._id,
+            img: {
+              data: fs.readFileSync(
+                path.join(__dirname + "/uploads/" + req.file.filename)
+              ),
+              contentType: "image/png",
+            },
+          };
+          imgModel.findOneAndUpdate(
+            { userId: req.params.id },
+            obj,
+            (err, item) => {
+              if (err) {
+                console.log("welocome");
+                res.send(doc);
+              } else {
+                if (!item) {
+                  console.log("welocme");
+                  res.send(doc);
+                }else{
+
+                  imgModel.create(obj, (err, item) => {
+                    if (err) {
+                      res.send(doc);
+                    } else {
+                      res.send(doc);
+                    }
+                  });
+                }
+              }
+            }
+          );
+        } else {
+          res.send(doc);
+        }
       })
       .catch((err) => {
+        console.log("welocome" + err);
         res.sendStatus(501);
       });
   }

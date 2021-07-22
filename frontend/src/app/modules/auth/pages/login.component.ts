@@ -7,8 +7,7 @@ import { PersonService } from 'src/app/core/services/person.service';
 @Component({
   selector: 'app-login',
   templateUrl:'login.component.html',
-  styles: [
-  ]
+  styleUrls:["login.component.css"]
 })
 export class LoginComponent implements OnInit {
   username:any;
