@@ -1,13 +1,39 @@
+<ul>
+  <li>
+    <a class="active anima">
+      DiGi
+      <i class="pi pi pi-user"></i>
+    </a>
+  </li>
 
-<p-menubar [model]="items">
-    <ng-template pTemplate="start">
-        <img src="assets/logo.png" height="40" class="p-mr-2">
-    </ng-template>
-    <ng-template pTemplate="end">
-        hello
-        <input type="text" pInputText placeholder="Search">
-    </ng-template>
-</p-menubar>
+  <li>
+    <a
+      class="{{ selected == 'users' ? 'selected' : '' }} 'circle'"
+      routerLink="../persons-list"
+      ><i class="pi pi pi-users"> </i
+    ></a>
+  </li>
 
+  <li>
+    <a
+      [class]="selected == 'add-user' ? 'selected' : ''"
+      routerLink="../add-person"
+      ><i class="pi pi pi-user"> <i class="pi pi-plus"></i></i
+    ></a>
+  </li>
+
+  <li>
+    <a [class]="selected == 'users' ? 'chart' : ''" routerLink="../statistics">
+      <i class="pi pi-chart-bar"></i>
+    </a>
+  </li>
+
+  <li (click)="logout()" style="float: right">
+    <a class="logout" style="cursor: pointer"
+      ><i *ngIf="authService.isAuthenticated()" class="pi pi-power-off"></i>
+      <i *ngIf="!authService.isAuthenticated()" class="pi pi-sign-in"></i>
+    </a>
+  </li>
+</ul>
 
 <router-outlet></router-outlet>

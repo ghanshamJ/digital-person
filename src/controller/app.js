@@ -127,7 +127,7 @@ app.put(
       .then((doc) => {
         if (req.file) {
           const obj = {
-            userId: doc._id,
+            userId: req.params.id,
             img: {
               data: fs.readFileSync(
                 path.join(__dirname + "/uploads/" + req.file.filename)
@@ -140,12 +140,20 @@ app.put(
             obj,
             (err, item) => {
               if (err) {
-                console.log("welocome");
+                console.log("error");
                 res.send(doc);
               } else {
                 if (!item) {
-                  console.log("welocme");
-                  res.send(doc);
+                  console.log("not item");
+                  imgModel.create(obj, (err, item) => {
+                    if (err) {
+                      console.log("err")
+                      res.send(doc);
+                    } else {
+                      console.log("success")
+                      res.send(doc);
+                    }
+                  });
                 }else{
 
                   imgModel.create(obj, (err, item) => {

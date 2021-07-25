@@ -1,6 +1,16 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { Router } from "@angular/router";
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from "@angular/core";
+import { DomSanitizer } from "@angular/platform-browser";
+import { NavigationStart, Router } from "@angular/router";
 import { SelectItem } from "primeng/api";
+import { PersonService } from "src/app/core/services/person.service";
 import { Person } from "src/app/shared/models/Person";
 import { AgePipe } from "src/app/shared/pipes/age.pipe";
 import { URL } from "../../../../core/Url";
@@ -12,24 +22,26 @@ import { URL } from "../../../../core/Url";
 })
 export class CustomListComponent implements OnInit {
   @Input() persons: Person[];
-  date = new Date(3737837873);
-  constructor(private router: Router, public url: URL) {}
-  ngOnInit() {
-    this.imgUrl = this.url.imageURL;
+  imageToShow = new Map();
+  constructor(
+    private personService: PersonService,
+    private router: Router,
+    public url: URL
+  ) {
+    console.log(this.persons);
   }
-  imgUrl: string;
-  selectedPerson: Person;
-  selectedPersonEditPerson: Person;
+  ngOnInit() {}
+  ngOnChanges(changes: SimpleChanges) {
+    for (const person of this.persons) {
+      this.personService.getImage(person._id).then(res=>{
+        this.imageToShow.set(person._id,res);
+      });
+    }
+  }
   showPersonDetail(person: Person): void {
     this.router.navigate(["../person-detail"], { state: person });
-    // this.display = true;
-    // this.selectedPerson = person;
   }
   editPersonDetail(person: Person): void {
     this.router.navigate(["../edit-person-detail"], { state: person });
-    // this.displayEdit = true;
-    // this.selectedPersonEditPerson = person;
   }
-  displayEdit: boolean = false;
-  display: boolean = false;
 }

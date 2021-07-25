@@ -14,7 +14,7 @@ export class PersonService {
     return this.httpService.addPerson(reqParam);
   }
   updatePerson(id: any, reqParm: any): Observable<any> {
-    return this.httpService.updatePerson(id,reqParm);
+    return this.httpService.updatePerson(id, reqParm);
   }
   getPersons(reqParam: any): Observable<any> {
     return this.httpService.getPersons(reqParam);
@@ -38,5 +38,44 @@ export class PersonService {
   }
   getCountry(countryCode: string): Country {
     return this.countryMap.get(countryCode);
+  }
+
+  // getImage(id: string): Observable<any> {
+  //   return this.httpService.getImage(id);
+  // }
+
+  async getImage(id): Promise<any> {
+    const promise = new Promise((res, rej) => {
+    this.httpService.getImage(id).subscribe(
+       (data) => {
+         this.createImageFromBlob(data, id).then(result=>{
+          res(result)
+         });
+      },
+      (error) => {
+        console.log("Error occured", error);
+      }
+    );
+    });
+    return promise;
+  }
+  createImageFromBlob(image: Blob, id): Promise<any> {
+    const promise = new Promise((res, rej) => {
+      let reader = new FileReader();
+      reader.addEventListener(
+        "load",
+        () => {
+          //this.imageToShow.set(id, reader.result);
+          res(reader.result);
+        },
+        false
+      );
+      if (image) {
+        reader.readAsDataURL(image);
+      } else {
+        //rej("error");
+      }
+    });
+    return promise;
   }
 }

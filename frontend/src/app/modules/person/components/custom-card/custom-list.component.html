@@ -3,10 +3,13 @@
     <ng-template let-person pTemplate="listItem">
       <div *ngIf="person.name" class="p-col-12">
         <div class="person-list-item">
-          <img
+          
+          <img [src]="imageToShow.get(person._id)" [alt]="person.name">
+
+          <!-- <img
             [src]="imgUrl + person._id"
             [alt]="person.name"
-          />
+          /> -->
           <div class="person-list-detail">
             <div class="person-name">{{ person.name }}</div>
             <br />
@@ -47,17 +50,8 @@
   </p-dataView>
 </div>
 <br />
-<p-dialog header="Detail" [(visible)]="display">
-  <app-person-detail
-    *ngIf="selectedPerson"
-    [person]="selectedPerson"
-  ></app-person-detail>
-</p-dialog>
-<p-dialog header="Edit Detail" [(visible)]="displayEdit">
-  <app-edit-person-detail
-    *ngIf="selectedPersonEditPerson"
-    [person]="selectedPersonEditPerson"
-  ></app-edit-person-detail>
-</p-dialog>
+
+
+
 <br /><br />
 <agm-map> </agm-map>

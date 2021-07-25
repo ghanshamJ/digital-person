@@ -13,7 +13,11 @@ export class LoginComponent implements OnInit {
   username:any;
   password:any;
   errorMsg:string="";
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {
+    if(this.authService.isAuthenticated()){
+      this.router.navigate(["persons-list"]);
+    }
+   }
 
   ngOnInit(): void {
   }

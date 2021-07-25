@@ -1,8 +1,10 @@
  <div class="centered">
+  User admin, Pass admin
+  <br><br>
   <ng-template pTemplate="header"> </ng-template>
   <input type="text" pInputText [(ngModel)]="username" placeholder="Username" />
   <br /><br />
-  <p-password [(ngModel)]="password" placeholder="Password"></p-password>
+  <input type="password" pInputText [(ngModel)]="password" placeholder="Password"/>
  <br /><br />
   <button (click)="login()" pButton type="button" label="Login"></button>
   <br>

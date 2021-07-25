@@ -8,61 +8,29 @@ import { Router } from "@angular/router";
 @Component({
   selector: "app-root",
   templateUrl: "app.component.html",
-  styles: [],
+  styleUrls: ["app.component.css"],
 })
 export class AppComponent implements OnInit {
   items: MenuItem[] = [];
+  selected: string = "chart";
   constructor(
     private primengConfig: PrimeNGConfig,
     private personService: PersonService,
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router
   ) {
-    
+    if (!this.authService.isAuthenticated) {
+      router.navigate(["login"]);
+    }
   }
 
   ngOnInit() {
     this.personService.setCountries();
-    this.items = [
-      {
-        label: "Persons",
-        icon: "pi pi-users",
-        items: [
-          {
-            label: "Add new",
-            icon: "pi pi-plus",
-            routerLink: "add-person",
-          },
-          {
-            label: "Show",
-            icon: "pi pi-list",
-            routerLink: "persons-list",
-          },
-        ],
-      },
-      {
-        label: "Statistics",
-        icon: "pi pi-chart-bar",
-        routerLink: "statistics",
-      },
-      this.authService.isAuthenticated()
-        ? {
-            label: "Logout",
-            icon: "pi pi-fw pi-power-off",
-            command: () => {
-              this.logout();
-            },
-          }
-        : {
-            label: "Login",
-            icon: "pi pi-lock",
-            routerLink: "login",
-          },
-    ];
   }
-
   logout() {
-    this.authService.logout();
-    this.router.navigate(["login"]);
+    if (this.authService.isAuthenticated) {
+      this.authService.logout();
+      this.router.navigate(["login"]);
+    }
   }
 }

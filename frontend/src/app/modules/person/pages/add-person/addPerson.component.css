@@ -16,3 +16,20 @@
     margin-left: -150px;
     margin-top: -150px;
  }
+
+
+ input[type=file]::file-selector-button {
+  border: 2px solid #7e28f0;
+  padding: .2em .4em;
+  border-radius: .2em;
+  background-color: #801af5;
+  transition: 1s;
+  color: white;
+}
+
+input[type=file]::file-selector-button:hover {
+  background-color: #f311ba;
+  border: 2px solid #ec07c6;
+}
+
+

@@ -49,4 +49,18 @@ export class HttpService {
   public getCountries(): Observable<Person[]> {
     return this.http.get<Person[]>("./assets/countries.json");
   }
+
+  contentHeaderImage = new HttpHeaders({
+    "Content-Type": "image/png",
+    "Access-Control-Allow-Origin": "*",
+  });
+
+   requestOptions: Object = {
+    /* other options here */
+    responseType: 'blob'
+  }
+
+  getImage(id:string): Observable<any> {
+    return this.http.get<any>(this.url.imageURL+id,this.requestOptions);
+  }
 }
