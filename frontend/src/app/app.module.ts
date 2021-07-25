@@ -15,12 +15,14 @@ import { MenubarModule } from "primeng/menubar";
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './core/http/interceptor';
 import { OnlyLoggedInUsersGuard } from './core/gaurds/OnlyLoggedInUsersGuard';
+import { HomeModule } from './modules/home/home.module';
 @NgModule({
   declarations: [
     AppComponent
     
   ],
   imports: [
+    HomeModule,
     BrowserModule,
     MenubarModule,
     AuthModule,

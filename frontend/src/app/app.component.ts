@@ -19,8 +19,8 @@ export class AppComponent implements OnInit {
     public authService: AuthService,
     private router: Router
   ) {
-    if (!this.authService.isAuthenticated) {
-      router.navigate(["login"]);
+    if (!this.authService.isAuthenticated()) {
+      router.navigate([""]);
     }
   }
 

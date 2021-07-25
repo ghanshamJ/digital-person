@@ -34,6 +34,7 @@ export class StatisticsComponent implements OnInit {
       let r = getRandomNum(0, 255);
       let g = getRandomNum(0, 255);
       let b = getRandomNum(0, 255);
+      
       return {
         backColor: `rgba(${r},${g},${b},1.5)`,
         hoverColor: `rgba(${r},${g},${b},2)`,
